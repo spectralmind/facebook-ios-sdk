@@ -129,7 +129,7 @@ params   = _params;
     CGColorSpaceRelease(space);
 }
 
-- (BOOL)shouldRotateToOrientation:(UIDeviceOrientation)orientation {
+- (BOOL)shouldRotateToOrientation:(UIInterfaceOrientation)orientation {
     if (orientation == _orientation) {
         return NO;
     } else {
@@ -290,7 +290,7 @@ params   = _params;
     if (self == [super initWithFrame:CGRectZero]) {
         _delegate = nil;
         _loadingURL = nil;
-        _orientation = UIDeviceOrientationUnknown;
+        _orientation = UIInterfaceOrientationPortrait;
         _showingKeyboard = NO;
         
         self.backgroundColor = [UIColor clearColor];
@@ -419,7 +419,7 @@ params   = _params;
 // UIDeviceOrientationDidChangeNotification
 
 - (void)deviceOrientationDidChange:(void*)object {
-    UIDeviceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (!_showingKeyboard && [self shouldRotateToOrientation:orientation]) {
         [self updateWebOrientation];
         
